@@ -1,0 +1,15 @@
+[Unit]
+Description=Venus Modbus Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/php /path/to/artisan modbus:query 127.0.0.1 --daemon
+RestartSec=10s
+Restart=always
+User=w_monitor
+Group=w_monitor
+StandardOutput=file:/var/log/venus-modbus.log
+
+[Install]
+WantedBy=multi-user.target

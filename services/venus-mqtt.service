@@ -1,0 +1,15 @@
+[Unit]
+Description=Venus MQTT Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/php /path/to/artisan mqtt:monitor 127.0.0.1
+RestartSec=10s
+Restart=always
+User=w_monitor
+Group=w_monitor
+StandardOutput=file:/var/log/venus-mqtt.log
+
+[Install]
+WantedBy=multi-user.target
